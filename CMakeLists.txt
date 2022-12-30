@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20)
 set(CMAKE_CXX_STANDARD 20)
 set(EXECUTABLE_OUTPUT_PATH ../)
 
-project(plugin-template)
+project(gui)
 set(NAMESPACE polymorph)
 
 if (${CMAKE_SOURCE_DIR} EQUAL ${PROJECT_NAME})
@@ -19,6 +19,7 @@ endif()
 #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
 
 include(cmake/FindPolymorphEngine.cmake)
+include(cmake/FindPluginDeps.cmake)
 
 file(GLOB_RECURSE SCRIPTS_SRC scripts/src/*.cpp)
 file(GLOB_RECURSE SCRIPTS_ICL scripts/include/*.hpp)
@@ -32,6 +33,10 @@ file(GLOB_RECURSE EXPORTS includeExport/*.hpp)
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
+get_target_property(input-icls input INCLUDE_DIRECTORIES)
+get_target_property(render-2D-icls render-2D INCLUDE_DIRECTORIES)
+get_target_property(render-core-icls render-core INCLUDE_DIRECTORIES)
+
 add_library(${PROJECT_NAME} SHARED ${SCRIPTS_SRC} ${SCRIPTS_ICL} ${FACTORY_SRC} ${FACTORY_ICL} ${CORE_SRC} ${CORE_ICL} ${EXPORTS})
 SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES PREFIX "")
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -41,6 +46,9 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 target_include_directories(${PROJECT_NAME} PUBLIC
         includeExport
+        ${input-icls}
+        ${render-2D-icls}
+        ${render-core-icls}
 )
 
 target_link_libraries(${PROJECT_NAME} PolymorphEngine)

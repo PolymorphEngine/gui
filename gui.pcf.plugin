@@ -1,4 +1,4 @@
-<Plugin name="plugin-template">
+<Plugin name="gui">
     <Templates>
     </Templates>
     <Prefabs>
