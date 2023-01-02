@@ -7,29 +7,37 @@
 
 #pragma once
 
-#include "polymorph/Core.hpp"
+#include "polymorph/engine/core.hpp"
+#include "polymorph/engine/api.hpp"
+#include "polymorph/engine/config.hpp"
 #include "ui/ButtonComponent.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-
-    COMPONENT_IMPL(polymorph::gui,  Button)
+    class ButtonImpl : public ButtonComponent
     {
-        COMPONENT_IMPL_CTOR(Button)
-            ///////////////////////////// PROPERTIES ////////////////////////////////
+        public:
+            ButtonImpl(GameObject entity, std::shared_ptr<myxmlpp::Node> data)
+            : ButtonComponent(entity, data) {};
+
+///////////////////////////// PROPERTIES ////////////////////////////////
         public:
             // Here add properties you want to initialize with configuration values in the initializer
 
         private:
-            render2D::TextureModule _defaultTexture;
+            render2D::Texture _defaultTexture;
 
-            //////////////////////--------------------------/////////////////////////
+//////////////////////--------------------------/////////////////////////
 
 
 
-            /////////////////////////////// METHODS /////////////////////////////////
+/////////////////////////////// METHODS /////////////////////////////////
         public:
             void start() override;
+
+            void build() override;
+
+            void saveAll() override;
 
             void update() override;
 
@@ -41,4 +49,3 @@ namespace polymorph::gui
 
     };
 }
-MAKE_INITIALIZER(polymorph::gui, Button)

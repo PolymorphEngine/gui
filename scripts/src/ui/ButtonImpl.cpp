@@ -5,14 +5,12 @@
 ** ButtonScript implementation
 */
 
-#include "polymorph/Core.hpp"
+#include "polymorph/engine/core.hpp"
 #include "IButtonHandler.hpp"
 #include "ui/ButtonImpl.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-    ButtonImpl::ButtonImpl(engine::GameObject gameObject)
-            : ButtonComponent(gameObject) {}
 
     // Called only once when the Script is enabled the first time
     void ButtonImpl::start()
@@ -76,4 +74,24 @@ namespace polymorph::gui
             }
         }
     }
+}
+
+void polymorph::engine::gui::ButtonImpl::build()
+{
+    _setProperty("Target", Target);
+    _setProperty("HoverTexture", HoverTexture);
+    _setProperty("ClickTexture", ClickTexture);
+    _setProperty("onClickHandler", onClickHandler);
+    _setProperty("onHoldHandler", onHoldHandler);
+    _setProperty("onReleaseHandler", onReleaseHandler);
+}
+
+void polymorph::engine::gui::ButtonImpl::saveAll()
+{
+    saveProperty("Target", Target);
+    saveProperty("HoverTexture", HoverTexture);
+    saveProperty("ClickTexture", ClickTexture);
+    saveProperty("onClickHandler", onClickHandler);
+    saveProperty("onHoldHandler", onHoldHandler);
+    saveProperty("onReleaseHandler", onReleaseHandler);
 }

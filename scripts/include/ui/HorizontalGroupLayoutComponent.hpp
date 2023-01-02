@@ -12,6 +12,8 @@
 
 namespace polymorph::engine::gui
 {
+    class HorizontalGroupLayoutComponent;
+    using HorizontalGroupLayout = safe_ptr<HorizontalGroupLayoutComponent>;
     class HorizontalGroupLayoutComponent : public AComponent
     {
         public:

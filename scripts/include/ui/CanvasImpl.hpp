@@ -9,17 +9,18 @@
 
 #include "CanvasComponent.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-
-    COMPONENT_IMPL(gui, Canvas)
+    class CanvasImpl : public CanvasComponent
     {
-        COMPONENT_IMPL_CTOR(Canvas)
-            //////////////////////--------------------------/////////////////////////
+        public:
+            CanvasImpl(GameObject entity, std::shared_ptr<myxmlpp::Node> data)
+            : CanvasComponent(entity, data){};
+//////////////////////--------------------------/////////////////////////
 
 
 
-            ///////////////////////////// PROPERTIES ////////////////////////////////
+///////////////////////////// PROPERTIES ////////////////////////////////
 
         private:
 
@@ -31,6 +32,10 @@ namespace polymorph::gui
         public:
             void start() override;
 
+            void build() override;
+
+            void saveAll() override;
+
             void update() override;
 
         private:
@@ -39,4 +44,3 @@ namespace polymorph::gui
 
     };
 }
-MAKE_INITIALIZER(polymorph::gui, Canvas)

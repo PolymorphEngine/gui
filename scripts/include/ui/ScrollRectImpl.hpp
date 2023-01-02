@@ -9,28 +9,31 @@
 
 #include "ui/ScrollRectComponent.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-    COMPONENT_IMPL(polymorph::gui, ScrollRect)
+    class ScrollRectImpl : public ScrollRectComponent
     {
-        COMPONENT_IMPL_CTOR(ScrollRect)
-
-            void onMouseEvent(event::MouseEvent &event) override;
-            /////////////////////////////// METHODS /////////////////////////////////
         public:
+            ScrollRectImpl(polymorph::engine::GameObject gameObject, std::shared_ptr<myxmlpp::Node> node)
+            : ScrollRectComponent(gameObject, node) {};
+
+/////////////////////////////// METHODS /////////////////////////////////
+        public:
+            void start() override;
+
+            void build() override;
+
+            void saveAll() override;
+
+            void update() override;
     
-        void start() override;
-    
-        void update() override;
+            void onMouseEvent(event::MouseEvent &event) override;
+            void addChild(polymorph::engine::GameObject child) final;
+            void removeChild(polymorph::engine::GameObject child) final;
         
-        void addChild(polymorph::engine::GameObject child) final;
-        void removeChild(polymorph::engine::GameObject child) final;
-    
         private:
     
-        //////////////////////--------------------------/////////////////////////
+    //////////////////////--------------------------/////////////////////////
     
     };
 }
-
-MAKE_INITIALIZER(polymorph::gui, ScrollRect)

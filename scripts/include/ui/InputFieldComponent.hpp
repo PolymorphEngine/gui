@@ -13,6 +13,9 @@
 
 namespace polymorph::engine::gui
 {
+    class InputFieldComponent;
+    using InputField = safe_ptr<InputFieldComponent>;
+    
     class InputFieldComponent : public AComponent, public event::IKeyPressedHandler, public event::IKeyDownHandler, public event::IMouseButtonPressedHandler
     {
         public:
@@ -29,6 +32,7 @@ namespace polymorph::engine::gui
                 Text_Only,
                 Numbers_Only
             };
+
             // Here add properties you want to initialize with configuration values in the initializer
             render2D::SpriteRenderer PlaceHolder;
             render2D::TextRenderer Target;

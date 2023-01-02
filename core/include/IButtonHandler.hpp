@@ -16,7 +16,7 @@ namespace polymorph::engine
     using GameObject = safe_ptr<Entity>;
 }
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
     class IButtonHandler
     {

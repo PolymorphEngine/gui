@@ -7,15 +7,15 @@
 
 #pragma once
 
-#include "ScriptingAPI/ScriptingApi.hpp"
 #include "VerticalGroupLayoutComponent.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-
-    COMPONENT_IMPL(gui, VerticalGroupLayout)
+    class VerticalGroupLayoutImpl : public VerticalGroupLayoutComponent
     {
-        COMPONENT_IMPL_CTOR(VerticalGroupLayout)
+        public:
+            VerticalGroupLayoutImpl(polymorph::engine::GameObject gameObject, std::shared_ptr<myxmlpp::Node> node)
+            : VerticalGroupLayoutComponent(gameObject, node) {};
             //////////////////////--------------------------/////////////////////////
 
 
@@ -23,6 +23,10 @@ namespace polymorph::gui
             /////////////////////////////// METHODS /////////////////////////////////
         public:
             void start() override;
+
+            void build() override;
+
+            void saveAll() override;
 
             void update() override;
 
@@ -32,4 +36,3 @@ namespace polymorph::gui
 
     };
 }
-MAKE_INITIALIZER(polymorph::gui, VerticalGroupLayout)

@@ -7,16 +7,18 @@
 
 #pragma once
 
-#include "polymorph/Core.hpp"
-#include "polymorph/render-2D.hpp"
+#include "polymorph/engine/core.hpp"
+#include "polymorph/engine/render-2D.hpp"
 #include "ui/HorizontalGroupLayoutComponent.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-
-    COMPONENT_IMPL(gui, HorizontalGroupLayout)
+    class HorizontalGroupLayoutImpl : public HorizontalGroupLayoutComponent
     {
-        COMPONENT_IMPL_CTOR(HorizontalGroupLayout)
+        public:
+            //////////////////////--------------------------/////////////////////////
+            HorizontalGroupLayoutImpl(GameObject entity, std::shared_ptr<myxmlpp::Node> data)
+            : HorizontalGroupLayoutComponent(entity, data){};
             //////////////////////--------------------------/////////////////////////
 
 
@@ -33,6 +35,10 @@ namespace polymorph::gui
         public:
             void start() override;
 
+            void build() override;
+
+            void saveAll() override;
+
             void update() override;
 
         private:
@@ -41,4 +47,3 @@ namespace polymorph::gui
 
     };
 }
-MAKE_INITIALIZER(polymorph::gui, HorizontalGroupLayout)

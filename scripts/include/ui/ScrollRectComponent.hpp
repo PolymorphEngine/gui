@@ -15,6 +15,9 @@
 
 namespace polymorph::engine::gui
 {
+    class ScrollRectComponent;
+    using ScrollRect = safe_ptr<ScrollRectComponent>;
+
     class ScrollRectComponent : public AComponent, public event::IMouseHandler
     {
         public:

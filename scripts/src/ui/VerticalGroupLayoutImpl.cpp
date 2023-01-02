@@ -7,11 +7,8 @@
 
 #include "ui/VerticalGroupLayoutImpl.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-    VerticalGroupLayoutImpl::VerticalGroupLayoutImpl(engine::GameObject gameObject)
-            : VerticalGroupLayoutComponent(gameObject)
-    {}
 
     // Called only once when the Script is enabled the first time
     void VerticalGroupLayoutImpl::start()
@@ -66,6 +63,32 @@ namespace polymorph::gui
             engine::Vector2 scale = {1, actualHeight / viewPortSize.height};
             ViewPort->sprite->setScale(scale);
         }
+    }
+
+    void VerticalGroupLayoutImpl::build()
+    {
+        _setProperty("TopPadding", TopPadding);
+        _setProperty("DownPadding", DownPadding);
+        _setProperty("LeftPadding", LeftPadding);
+        _setProperty("RightPadding", RightPadding);
+        _setProperty("Spacing", Spacing);
+        _setProperty("ControlChildWidth", ControlChildWidth);
+        _setProperty("ControlChildHeight", ControlChildHeight);
+        _setProperty("ScaleViewPortHeight", ScaleViewPortHeight);
+        _setProperty("ViewPort", ViewPort);
+    }
+
+    void VerticalGroupLayoutImpl::saveAll()
+    {
+        saveProperty("TopPadding", TopPadding);
+        saveProperty("DownPadding", DownPadding);
+        saveProperty("LeftPadding", LeftPadding);
+        saveProperty("RightPadding", RightPadding);
+        saveProperty("Spacing", Spacing);
+        saveProperty("ControlChildWidth", ControlChildWidth);
+        saveProperty("ControlChildHeight", ControlChildHeight);
+        saveProperty("ScaleViewPortHeight", ScaleViewPortHeight);
+        saveProperty("ViewPort", ViewPort);
     }
 
 }

@@ -10,7 +10,7 @@
 
 #include <string>
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
     class IInputFieldHandler
     {

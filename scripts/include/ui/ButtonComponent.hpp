@@ -15,25 +15,28 @@
 
 namespace polymorph::engine::gui
 {
-    class ButtonComponent : public AComponent
+    class ButtonComponent;
+    using Button = safe_ptr<ButtonComponent>;
+    
+    class ButtonComponent : public AComponent, public event::IMouseHandler
     {
         public:
             ButtonComponent(GameObject entity, std::shared_ptr<myxmlpp::Node> data)
             : AComponent(data, entity){};
 
-            ///////////////////////////// PROPERTIES ////////////////////////////////
+///////////////////////////// PROPERTIES ////////////////////////////////
 
         public:
             void onMouseEvent(event::MouseEvent &event) override = 0;
 
-            ///////////////////////////// PROPERTIES ////////////////////////////////
+///////////////////////////// PROPERTIES ////////////////////////////////
         public:
             render2D::SpriteRenderer Target;
-            render2D::TextureModule HoverTexture;
-            render2D::TextureModule ClickTexture;
+            render2D::Texture HoverTexture;
+            render2D::Texture ClickTexture;
             engine::GameObject onClickHandler;
             engine::GameObject onReleaseHandler;
             engine::GameObject onHoldHandler;
-            //////////////////////--------------------------/////////////////////////
+//////////////////////--------------------------/////////////////////////
     };
 }

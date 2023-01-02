@@ -12,6 +12,9 @@
 
 namespace polymorph::engine::gui
 {
+    class VerticalGroupLayoutComponent;
+    using VerticalGroupLayout = safe_ptr<VerticalGroupLayoutComponent>;
+    
     class VerticalGroupLayoutComponent : public AComponent
     {
         public:

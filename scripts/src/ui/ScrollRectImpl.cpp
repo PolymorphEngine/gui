@@ -7,18 +7,12 @@
 
 
 
-#include <polymorph/Types.hpp>
-#include <polymorph/Core.hpp>
+#include <polymorph/engine/types.hpp>
+#include <polymorph/engine/core.hpp>
 #include "ui//ScrollRectImpl.hpp"
-#include "../../Factory/include/ScriptFactory.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-    ScrollRectImpl::ScrollRectImpl(polymorph::engine::GameObject gameObject)
-            : ScrollRectComponent(std::move(gameObject))
-    {
-    }
-
     void ScrollRectImpl::update()
     {
 
@@ -66,4 +60,22 @@ namespace polymorph::gui
     {
         ContentRect->removeChild(child->transform);
     }
+}
+
+void polymorph::engine::gui::ScrollRectImpl::build()
+{
+    _setProperty("ScrollSpeed", ScrollSpeed);
+    _setProperty("RectTop", RectTop);
+    _setProperty("RectBottom", RectBottom);
+    _setProperty("ScrollingChildren", ScrollingChildren);
+    _setProperty("ContentRect", ContentRect);
+}
+
+void polymorph::engine::gui::ScrollRectImpl::saveAll()
+{
+    saveProperty("ScrollSpeed", ScrollSpeed);
+    saveProperty("RectTop", RectTop);
+    saveProperty("RectBottom", RectBottom);
+    saveProperty("ScrollingChildren", ScrollingChildren);
+    saveProperty("ContentRect", ContentRect);
 }

@@ -8,16 +8,12 @@
 #include "IInputFieldHandler.hpp"
 #include "ui/InputFieldImpl.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-    InputFieldImpl::InputFieldImpl(engine::GameObject gameObject)
-            : InputFieldComponent(gameObject)
-    {}
-
     // Called only once when the Script is enabled the first time
     void InputFieldImpl::start()
     {
-        _focusedTextTimer = std::make_unique<engine::Timer>(Game, 0.5f);
+        _focusedTextTimer = std::make_unique<time::Timer>(Game, 0.5f);
     }
 
     // Called every frame by the engine
@@ -165,4 +161,24 @@ namespace polymorph::gui
         Target->text->setString(_actualText);
     }
 
+    void InputFieldImpl::build()
+    {
+        _setProperty("Type", Type);
+        _setProperty("Target", Target);
+        _setProperty("PlaceHolder", PlaceHolder);
+        _setProperty("OnSubmit", OnSubmit);
+        _setProperty("OnValueChanged", OnValueChanged);
+        _setProperty("OnExitFocus", OnExitFocus);
+        
+    }
+
+    void InputFieldImpl::saveAll()
+    {
+        saveProperty("Type", Type);
+        saveProperty("Target", Target);
+        saveProperty("PlaceHolder", PlaceHolder);
+        saveProperty("OnSubmit", OnSubmit);
+        saveProperty("OnValueChanged", OnValueChanged);
+        saveProperty("OnExitFocus", OnExitFocus);
+    }
 }

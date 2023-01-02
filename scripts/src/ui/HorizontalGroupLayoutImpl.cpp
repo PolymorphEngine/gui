@@ -7,11 +7,8 @@
 
 #include "ui/HorizontalGroupLayoutImpl.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-    HorizontalGroupLayoutImpl::HorizontalGroupLayoutImpl(engine::GameObject gameObject)
-            : HorizontalGroupLayoutComponent(gameObject)
-    {}
 
     // Called only once when the Script is enabled the first time
     void HorizontalGroupLayoutImpl::start()
@@ -67,6 +64,34 @@ namespace polymorph::gui
             engine::Vector2 scale = {actualWidth / viewPortSize.x, 1};
             ViewPort->sprite->setScale(scale);
         }
+    }
+
+    void HorizontalGroupLayoutImpl::build()
+    {
+        _setProperty("ViewPort", ViewPort);
+        _setProperty("LeftPadding", LeftPadding);
+        _setProperty("RightPadding", RightPadding);
+        _setProperty("TopPadding", TopPadding);
+        _setProperty("DownPadding", DownPadding);
+        _setProperty("Spacing", Spacing);
+        _setProperty("ControlChildWidth", ControlChildWidth);
+        _setProperty("ControlChildHeight", ControlChildHeight);
+        _setProperty("ScaleViewPortWidth", ScaleViewPortWidth);
+        
+    }
+
+    void HorizontalGroupLayoutImpl::saveAll()
+    {
+        saveProperty("ViewPort", ViewPort);
+        saveProperty("LeftPadding", LeftPadding);
+        saveProperty("RightPadding", RightPadding);
+        saveProperty("TopPadding", TopPadding);
+        saveProperty("DownPadding", DownPadding);
+        saveProperty("Spacing", Spacing);
+        saveProperty("ControlChildWidth", ControlChildWidth);
+        saveProperty("ControlChildHeight", ControlChildHeight);
+        saveProperty("ScaleViewPortWidth", ScaleViewPortWidth);
+        
     }
 
 }

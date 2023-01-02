@@ -12,6 +12,9 @@
 
 namespace polymorph::engine::gui
 {
+    class CanvasComponent;
+    using Canvas = safe_ptr<CanvasComponent>;
+    
     class CanvasComponent : public AComponent
     {
         public:

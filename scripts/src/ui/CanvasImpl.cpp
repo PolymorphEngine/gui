@@ -7,11 +7,8 @@
 
 #include "ui/CanvasImpl.hpp"
 
-namespace polymorph::gui
+namespace polymorph::engine::gui
 {
-    CanvasImpl::CanvasImpl(engine::GameObject gameObject)
-            : CanvasComponent(gameObject)
-    {}
 
     // Called only once when the Script is enabled the first time
     void CanvasImpl::start()
@@ -24,4 +21,13 @@ namespace polymorph::gui
 
     }
 
+    void CanvasImpl::build()
+    {
+        _setProperty("Target", Target);
+    }
+
+    void CanvasImpl::saveAll()
+    {
+        saveProperty("Target", Target);
+    }
 }
