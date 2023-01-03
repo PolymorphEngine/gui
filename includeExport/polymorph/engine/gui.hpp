@@ -4,9 +4,5 @@
  * 
  */
 
-#include "../../../scripts/include/ui/ButtonComponent.hpp"
-#include "../../../scripts/include/ui/CanvasComponent.hpp"
-#include "../../../scripts/include/ui/VerticalGroupLayoutComponent.hpp"
-#include "../../../scripts/include/ui/HorizontalGroupLayoutComponent.hpp"
-#include "../../../scripts/include/ui/ScrollRectComponent.hpp"
-#include "../../../scripts/include/ui/InputFieldComponent.hpp"
+#include "gui/layout.hpp"
+#include "gui/user-input.hpp"
