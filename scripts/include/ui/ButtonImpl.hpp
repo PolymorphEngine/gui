@@ -33,7 +33,7 @@ namespace polymorph::engine::gui
 
 /////////////////////////////// METHODS /////////////////////////////////
         public:
-            void start() override;
+            void onAwake() override;
 
             void build() override;
 

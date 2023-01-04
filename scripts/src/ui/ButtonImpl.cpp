@@ -13,9 +13,9 @@ namespace polymorph::engine::gui
 {
 
     // Called only once when the Script is enabled the first time
-    void ButtonImpl::start()
+    void ButtonImpl::onAwake()
     {
-        if (!!Target)
+        if (Target)
             _defaultTexture = Target->sprite;
     }
 
