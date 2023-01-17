@@ -181,4 +181,10 @@ namespace polymorph::engine::gui
         saveProperty("OnValueChanged", OnValueChanged);
         saveProperty("OnExitFocus", OnExitFocus);
     }
+
+    void InputFieldImpl::onKeyReleased(event::KeyCode code)
+    {
+        if (code == event::KeyCode::LEFT_SHIFT || code == event::KeyCode::RIGHT_SHIFT)
+            isShiftDown = false;
+    }
 }

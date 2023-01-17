@@ -16,7 +16,7 @@ namespace polymorph::engine::gui
     class InputFieldComponent;
     using InputField = safe_ptr<InputFieldComponent>;
     
-    class InputFieldComponent : public AComponent, public event::IKeyPressedHandler, public event::IKeyDownHandler, public event::IMouseButtonPressedHandler
+    class InputFieldComponent : public AComponent, public event::IKeyPressedHandler,  public event::IKeyReleasedHandler, public event::IKeyDownHandler, public event::IMouseButtonPressedHandler
     {
         public:
             InputFieldComponent(GameObject entity, std::shared_ptr<myxmlpp::Node> data)

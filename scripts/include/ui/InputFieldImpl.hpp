@@ -45,6 +45,8 @@ namespace polymorph::engine::gui
 
             void onKeyPressed(event::KeyCode code) override;
 
+            void onKeyReleased(event::KeyCode code) override;
+
             void onMouseButtonPressed(event::MouseEvent &button) override;
 
         private:
